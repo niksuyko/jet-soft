@@ -145,6 +145,12 @@
   font-weight: bold;
 }
 
+.client-details-section {
+  width: 100%; /* Make sure the width is the same as other sections */
+  padding: 0; /* Adjust padding to match other sections */
+  /* Add more styles here to match the other sections */
+}
+
 .submit-client-btn {
   background-color: #4CAF50;
   color: white;

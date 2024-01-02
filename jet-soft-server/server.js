@@ -86,6 +86,7 @@ app.get('/api/inventory/search', async (req, res) => {
 });
 
 
+
 app.post('/api/clients', async (req, res) => {
     try {
       const { name, phone_number, tail_number, additional_comments } = req.body;
@@ -99,4 +100,31 @@ app.post('/api/clients', async (req, res) => {
       res.status(500).send('Server error');
     }
 });
+
+app.put('/api/clients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, phone_number, tail_number, additional_comments } = req.body;
+    const updateClient = await pool.query(
+      'UPDATE clients SET name = $1, phone_number = $2, tail_number = $3, additional_comments = $4 WHERE id = $5 RETURNING *',
+      [name, phone_number, tail_number, additional_comments, id]
+    );
+    res.json(updateClient.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+app.delete('/api/clients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM clients WHERE id = $1', [id]);
+    res.json({ message: 'Client deleted successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
   
