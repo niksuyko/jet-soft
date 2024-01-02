@@ -70,7 +70,22 @@ app.get('/api/clients', async (req, res) => {
       res.status(500).send('Server error');
     }
 });
-  
+
+app.get('/api/inventory/search', async (req, res) => {
+  try {
+    const { searchQuery } = req.query;
+    const query = 'SELECT * FROM inventory WHERE item_name LIKE $1';
+    const values = [`%${searchQuery}%`]; // '%' wildcards are used to match any sequence of characters
+
+    const { rows } = await pool.query(query, values);
+    res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+
 app.post('/api/clients', async (req, res) => {
     try {
       const { name, phone_number, tail_number, additional_comments } = req.body;

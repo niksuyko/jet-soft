@@ -8,6 +8,7 @@ function InventoryPage() {
   const [itemName, setItemName] = useState('');
   const [itemQuantity, setItemQuantity] = useState('');
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3001/api/inventory')
@@ -21,6 +22,17 @@ function InventoryPage() {
         setLoading(false);
       });
   }, []);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:3001/api/inventory/search?searchQuery=${searchTerm}`);
+      const data = await response.json();
+      setInventoryItems(data); // Assuming you have a state to store and display inventory items
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
 
   const handleAddItem = (e) => {
     e.preventDefault(); // Prevent form submission if you're using a form
@@ -90,12 +102,20 @@ function InventoryPage() {
 
       <section className="search-section">
         <h2>Search Inventory</h2>
-        <input type="text" placeholder="Search..."/>
-        <button>Search</button>
-        {/* Search functionality will be implemented here */}
+        <form onSubmit={handleSearch}>
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
+        {/* Display search results */}
       </section>
     </div>
   );
 }
 
 export default InventoryPage;
+
