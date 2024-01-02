@@ -55,9 +55,10 @@ function ClientsPage() {
   };
   return (
     <div className="main-content">
-      <h2>Clients</h2>
+      
       
       <div className="client-dropdown-section">
+      <h2>Clients</h2>
         <label htmlFor="client-select">Select a client:</label>
         <select id="client-select" onChange={handleSelectChange} defaultValue="">
           <option value="" disabled>Select a client</option>

@@ -147,8 +147,9 @@
 
 .client-details-section {
   width: 100%; /* Make sure the width is the same as other sections */
-  padding: 0; /* Adjust padding to match other sections */
+  padding: 1; /* Adjust padding to match other sections */
   /* Add more styles here to match the other sections */
+  margin-left: 25px;
 }
 
 .submit-client-btn {
