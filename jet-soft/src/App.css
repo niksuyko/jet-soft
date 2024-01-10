@@ -3,33 +3,33 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: 50px; /* Give space for the fixed header */
-  background: #fff; /* or any color that matches your design */
+  padding-top: 50px;
+  background: #fff;
 }
 
 .App-header {
   background-color: #2e333b;
-  min-height: 76px; /* Header height */
+  min-height: 76px;
   color: white;
-  position: fixed; /* Fix header at the top */
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* Ensure header extends to the right edge of the viewport */
-  z-index: 2; /* Ensure the header is above the sidebar */
+  right: 0; 
+  z-index: 2; 
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 20px; /* Adjust the padding as needed */
+  padding: 0 20px;
 }
 
 .sidebar {
   position: fixed;
   left: 0;
-  top: 50px; /* The sidebar starts below the header */
-  width: 60px; /* Sidebar width */
+  top: 50px;
+  width: 60px;
   bottom: 0;
   background: #23262c;
-  z-index: 1; /* Below the header */
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,15 +37,15 @@
 }
 
 .main-content {
-  padding-top: 20px; /* Adjust this value so that the content starts below the header */
-  margin-left: 60px; /* Offset the main content to the width of the sidebar */
+  padding-top: 20px;
+  margin-left: 60px;
 }
 
 .sidebar-icon {
-  width: 30px; /* Adjust based on your icon size */
-  height: 30px; /* Adjust based on your icon size */
-  margin-top: 50px; /* Start below the header */
-  margin-bottom: 20px; /* Space between icons */
+  width: 30px;
+  height: 30px;
+  margin-top: 50px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -53,17 +53,17 @@
   background: none;
   border: none;
   padding: 0px;
-  margin-bottom: 0px; /* Spacing between buttons */
+  margin-bottom: 0px;
   cursor: pointer;
 }
 
 .inventoryside-button img, .clients-button img {
-  width: 30px; /* Adjust size as needed */
-  height: 30px; /* Adjust size as needed */
+  width: 30px;
+  height: 30px;
 }
 
 .App-logo {
-  height: 40px; /* Adjust size as needed */
+  height: 40px;
 }
 
 
@@ -98,7 +98,7 @@
 .inventory-section input, .add-inventory-section input, .search-section input {
   margin-bottom: 10px;
   padding: 5px;
-  width: 200px; /* Adjust the width as needed */
+  width: 200px;
 }
 
 .add-inventory-section button, .search-section button {
@@ -114,6 +114,21 @@
 .add-inventory-section button:hover, .search-section button:hover {
   background-color: #218838;
 }
+
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 2px 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
 
 .App-footer {
   background-color: #282c34;
@@ -148,7 +163,6 @@
 .client-details-section {
   width: 100%; /* Make sure the width is the same as other sections */
   padding: 1; /* Adjust padding to match other sections */
-  /* Add more styles here to match the other sections */
   margin-left: 25px;
 }
 

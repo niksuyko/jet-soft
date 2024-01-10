@@ -38,7 +38,6 @@ function ClientsPage() {
     })
     .catch(error => console.error('Error:', error));
   };
-  // Placeholder data for clients, to be replaced with data from your database
   const currentClients = ['Client 1', 'Client 2', 'Client 3'];
   function handleSelectChange(e) {
     const clientId = e.target.value;
@@ -62,7 +61,7 @@ function ClientsPage() {
         <label htmlFor="client-select">Select a client:</label>
         <select id="client-select" onChange={handleSelectChange} defaultValue="">
           <option value="" disabled>Select a client</option>
-          <option value="none" disabled>None</option> {/* This is the new line */}
+          <option value="none" disabled>None</option> {}
           {clients.map(client => (
             <option key={client.id} value={client.id}>{client.name}</option>
           ))}

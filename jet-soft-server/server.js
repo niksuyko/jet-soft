@@ -60,7 +60,17 @@ app.post('/api/inventory', async (req, res) => {
   }
 });
 
-  
+app.delete('/api/inventory/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM inventory WHERE id = $1', [id]);
+    res.json({ message: 'Inventory item deleted successfully.' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 app.get('/api/clients', async (req, res) => {
     try {
       const { rows } = await pool.query('SELECT * FROM clients');
@@ -75,7 +85,7 @@ app.get('/api/inventory/search', async (req, res) => {
   try {
     const { searchQuery } = req.query;
     const query = 'SELECT * FROM inventory WHERE item_name LIKE $1';
-    const values = [`%${searchQuery}%`]; // '%' wildcards are used to match any sequence of characters
+    const values = [`%${searchQuery}%`];
 
     const { rows } = await pool.query(query, values);
     res.json(rows);

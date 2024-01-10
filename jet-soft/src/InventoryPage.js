@@ -28,7 +28,7 @@ function InventoryPage() {
     try {
       const response = await fetch(`http://localhost:3001/api/inventory/search?searchQuery=${searchTerm}`);
       const data = await response.json();
-      setInventoryItems(data); // Assuming you have a state to store and display inventory items
+      setInventoryItems(data);
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
@@ -60,6 +60,23 @@ function InventoryPage() {
     });
   };
 
+  const confirmDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this item?')) {
+      deleteItem(id);
+    }
+  };
+
+  const deleteItem = (id) => {
+    fetch(`http://localhost:3001/api/inventory/${id}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(() => {
+      setInventoryItems(inventoryItems.filter(item => item.id !== id));
+    })
+    .catch(error => console.error('Error deleting item:', error));
+  };
+
   if (loading) {
     return <div>Loading inventory...</div>;
   }
@@ -75,7 +92,12 @@ function InventoryPage() {
           <h2>Inventory</h2>
           <ul>
             {inventoryItems.map(item => (
-              <li key={item.id}>{item.item_name} - Quantity: {item.quantity}</li>
+              <li key={item.id}>
+                {item.item_name} - Quantity: {item.quantity}
+                <button onClick={() => confirmDelete(item.id)} className="delete-button">
+                  X
+                </button>
+              </li>
             ))}
           </ul>
         </section>
