@@ -1,8 +1,8 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import ClientsPage from './ClientsPage'; // Make sure the path is correct for your project structure
-import InventoryPage from './InventoryPage'; // You should create a separate component for inventory similar to ClientsPage
+import ClientsPage from './ClientsPage';
+import InventoryPage from './InventoryPage';
 import './App.css';
 
 function App() {
