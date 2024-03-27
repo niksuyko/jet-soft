@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ClientsPage from './ClientsPage';
 import InventoryPage from './InventoryPage';
+import JetTrackingPage from './JetTrackingPage';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path='/' element={<InventoryPage />} />
           <Route path='/clients' element={<ClientsPage />} />
+          <Route path='/jettracking' element={<JetTrackingPage />} />
         </Routes>
 
         <footer className="App-footer">
