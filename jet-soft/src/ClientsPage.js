@@ -177,7 +177,7 @@ function ClientsPage() {
         <p>Phone Number: {selectedClient.phone_number}</p>
         <p>Tail Number: {selectedClient.tail_number}</p>
         <p>Additional Comments: {selectedClient.additional_comments}</p>
-        <p>Priority {selectedClient.priority}</p>
+        <p>Priority: {selectedClient.priority}</p>
         {/* Add Delete Button Here */}
         <button type="submit" className="delete-client" onClick={() => handleDeleteClient(selectedClient.id)} style={{marginTop: "10px", cursor: "pointer", border: "none", borderRadius: "4px", padding: "5px 10px"}}>
           Delete Client
@@ -201,6 +201,10 @@ function ClientsPage() {
     <div className="container">
       <h4><font size="10"><b>{client.name}</b></font></h4>
       <h5><font size="5"><b>{client.tail_number}</b></font></h5>
+      <img className = "priority-pic"
+        src={`${process.env.PUBLIC_URL}/priority${client.priority}.png`} 
+        alt={`Priority ${client.priority}`} 
+      />
     </div>
   </div>
 ))}
